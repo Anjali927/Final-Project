@@ -8,8 +8,8 @@ let fft;
 var r;
 var g;
 
-var rslider = 100;
-var gslider = 100;
+var rSlider = 100;
+var gSlider = 100;
 
 //preload sound files
 function preload() {
@@ -22,9 +22,11 @@ function setup() {
   noStroke(0);
   frameRate(30);
   
-  rslider = createSlider(0, 255, 0, 5);
-  gslider = createSlider(0, 255, 0, 5);
-
+  rSlider = createSlider(0, 255, 0, 5);
+  rSlider.position(20, 20);
+  gSlider = createSlider(0, 255, 0, 5);
+  gSlider.position(20, 40);
+  
   fft = new p5.FFT();
   fft.setInput(sound);
   sound.loop();
@@ -32,8 +34,8 @@ function setup() {
 
 //draw music visualizer using quads with random color fills
 function draw() {
-  var r = rslider.value();
-  var g = gslider.value();
+  var r = rSlider.value();
+  var g = gSlider.value();
   
   a -= 0.1;
   background(0); 
