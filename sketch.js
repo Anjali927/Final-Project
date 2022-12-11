@@ -3,7 +3,7 @@
 //Sound file: https://soundcloud.com/heda-official/stray-kids-back-door-heda-remix
 
 var a = 0;
-let sound;
+let song;
 let fft;
 var cs;
 
@@ -11,7 +11,7 @@ var colorSlider = 100;
 
 //preload sound files
 function preload() {
-  sound = loadSound('Stray_Kids.mp3');
+  song = loadSound('Stray_Kids.mp3');
 }
 
 //set up canvas, frame rate, and create new p5.fft object
@@ -26,8 +26,8 @@ function setup() {
   text('lightness', colorSlider.x * 2 + colorSlider.width, 35);
   
   fft = new p5.FFT();
-  fft.setInput(sound);
-  sound.loop();
+  fft.setInput(song);
+  song.loop();
 }
 
 //draw music visualizer using quads with random color fills
