@@ -21,7 +21,7 @@ function setup() {
   frameRate(30);
   
   colorSlider = createSlider(0, 255, 0, 5);
-  colorSlider.position(20, 20);
+  colorSlider.position(windowWidth/2.5, 20);
   fill(255, 255, 255);
   text('lightness', colorSlider.x * 2 + colorSlider.width, 35);
   
@@ -40,24 +40,24 @@ function draw() {
   for (var xVal = -10; xVal < 10; xVal++) {
   for (var zVal = -10; zVal < 10; zVal++) {
 		 
-  var yVal = int(40 * cos(0.55 * analysis(xVal, zVal, 0, 0) + a));  
+  var yVal = int(40 * cos(0.55 * analysis(xVal, zVal, 0, 0) + a));
     
   var xmVal = xVal*17 -8;
   var xtVal = xVal*17 +8;
   var zmVal = zVal*17 -8;
   var ztVal = zVal*17 +8;
     
-  var halfw = width/2;
-  var halfh = height/2;
+  var halfWidth = width/2;
+  var halfHeight = height/2;
 				
-  var isox1 = int(xmVal - zmVal + halfw);
-  var isoy1 = int((xmVal + zmVal) * 0.5 + halfh);
-  var isox2 = int(xmVal - ztVal + halfw);
-  var isoy2 = int((xmVal + ztVal) * 0.5 + halfh);
-  var isox3 = int(xtVal - ztVal + halfw);
-  var isoy3 = int((xtVal + ztVal) * 0.5 + halfh);
-  var isox4 = int(xtVal - zmVal + halfw);
-  var isoy4 = int((xtVal + zmVal) * 0.5 + halfh);
+  var isox1 = int(xmVal - zmVal + halfWidth);
+  var isoy1 = int((xmVal + zmVal) * 0.5 + halfHeight);
+  var isox2 = int(xmVal - ztVal + halfWidth);
+  var isoy2 = int((xmVal + ztVal) * 0.5 + halfHeight);
+  var isox3 = int(xtVal - ztVal + halfWidth);
+  var isoy3 = int((xtVal + ztVal) * 0.5 + halfHeight);
+  var isox4 = int(xtVal - zmVal + halfWidth);
+  var isoy4 = int((xtVal + zmVal) * 0.5 + halfHeight);
     
   fill (random(cs), random(cs), random(cs));
   quad(isox2, isoy2-yVal, isox3, isoy3-yVal, isox3, isoy3+40, isox2, isoy2+40);
