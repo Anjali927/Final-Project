@@ -19,11 +19,11 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   noStroke(0);
   frameRate(30);
+  textSize(15);
+  fill(255);
   
   colorSlider = createSlider(0, 255, 0, 5);
   colorSlider.position(windowWidth/2.5, 20);
-  fill(255, 255, 255);
-  text('lightness', colorSlider.x * 2 + colorSlider.width, 35);
   
   fft = new p5.FFT();
   fft.setInput(song);
@@ -33,7 +33,8 @@ function setup() {
 //draw music visualizer using quads with random color fills
 function draw() {
   var cs = colorSlider.value();
-  
+  text('Color', colorSlider.x * 2 + colorSlider.width, 20);
+
   a -= 0.1;
   background(0); 
 	
