@@ -5,11 +5,9 @@
 var a = 0;
 let sound;
 let fft;
-var r;
-var g;
+var cs;
 
-var rSlider = 100;
-var gSlider = 100;
+var colorSlider = 100;
 
 //preload sound files
 function preload() {
@@ -22,10 +20,10 @@ function setup() {
   noStroke(0);
   frameRate(30);
   
-  rSlider = createSlider(0, 255, 0, 5);
-  rSlider.position(20, 20);
-  gSlider = createSlider(0, 255, 0, 5);
-  gSlider.position(20, 40);
+  colorSlider = createSlider(0, 255, 0, 5);
+  colorSlider.position(20, 20);
+  fill(255, 255, 255);
+  text('lightness', colorSlider.x * 2 + colorSlider.width, 35);
   
   fft = new p5.FFT();
   fft.setInput(sound);
@@ -34,8 +32,7 @@ function setup() {
 
 //draw music visualizer using quads with random color fills
 function draw() {
-  var r = rSlider.value();
-  var g = gSlider.value();
+  var cs = colorSlider.value();
   
   a -= 0.1;
   background(0); 
@@ -45,10 +42,10 @@ function draw() {
 		 
   var yVal = int(40 * cos(0.55 * analysis(xVal, zVal, 0, 0) + a));  
     
-  var xmVal = xVal*17 -8.5;
-  var xtVal = xVal*17 +8.5;
-  var zmVal = zVal*17 -8.5;
-  var ztVal = zVal*17 +8.5;
+  var xmVal = xVal*17 -8;
+  var xtVal = xVal*17 +8;
+  var zmVal = zVal*17 -8;
+  var ztVal = zVal*17 +8;
     
   var halfw = width/2;
   var halfh = height/2;
@@ -62,9 +59,9 @@ function draw() {
   var isox4 = int(xtVal - zmVal + halfw);
   var isoy4 = int((xtVal + zmVal) * 0.5 + halfh);
     
-  fill (random(r, g), random(r, g), random(r, g));
+  fill (random(cs), random(cs), random(cs));
   quad(isox2, isoy2-yVal, isox3, isoy3-yVal, isox3, isoy3+40, isox2, isoy2+40);
-  fill(random(r, g), random(r, g), random(r, g));
+  fill(random(cs), random(cs), random(cs));
   quad(isox3, isoy3-yVal, isox4, isoy4-yVal, isox4, isoy4+40, isox3, isoy3+40);
   fill(167, 199, 231);
   quad(isox1, isoy1-yVal, isox2, isoy2-yVal, isox3, isoy3-yVal, isox4, isoy4-yVal);
